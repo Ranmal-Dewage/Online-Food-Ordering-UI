@@ -1,0 +1,26 @@
+.nav-bar-styles{
+    background-color: #0277BD;
+    position: sticky !important;
+    top : 0 !important;
+    z-index: 1;
+}
+
+.main-logo-container{
+    margin-left: 0px !important;
+}
+
+.main-logo-text{
+    color:white !important;
+}
+
+.user-icon{
+    margin-left: 16px;
+    margin-right: 12px;
+    background-color: hsl(88, 44%, 48%) !important;
+}
+
+.shopping-cart-icon{
+    margin-left: 16px;
+    margin-right: 12px;
+    background-color: hsl(44, 43%, 48%) !important;
+}

@@ -1,0 +1,11 @@
+.product-card-alignment{
+    max-width: 950px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+
+.product-card-img{
+    width: 300px !important;
+    height: 280px !important;
+}

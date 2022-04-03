@@ -1,0 +1,7 @@
+.footer-alignment{
+    width: 100% !important;
+    position: sticky !important;
+    bottom : 0 !important;
+    left : 0 !important;
+    right : 0 !important;
+}
