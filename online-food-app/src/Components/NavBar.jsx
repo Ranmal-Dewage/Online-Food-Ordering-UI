@@ -7,6 +7,8 @@ import {
     MDBBtn,
 } from "mdb-react-ui-kit";
 
+import SearchBar from "./SearchBar";
+
 import MainLogo from "../Images/Logo_1.png"
 
 import "../CSS/NavBar.css";
@@ -25,11 +27,12 @@ export default function NavBar() {
                     The Healthy Foods
                 </MDBNavbarBrand>
             </MDBContainer>
+            <SearchBar />
             <MDBBtn className="shopping-cart-icon" size="lg" floating>
-                <MDBIcon fas icon="shopping-cart" size='lg'/>
+                <MDBIcon fas icon="shopping-cart" size='lg' />
             </MDBBtn>
             <MDBBtn className="user-icon" size="lg" floating>
-                <MDBIcon fas icon="user-alt" size='lg'/>
+                <MDBIcon fas icon="user-alt" size='lg' />
             </MDBBtn>
         </MDBNavbar>
     );

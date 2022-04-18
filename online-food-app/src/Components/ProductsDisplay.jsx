@@ -4,6 +4,11 @@ import { MDBContainer } from "mdb-react-ui-kit";
 import ProductCard from "./ProductCard";
 
 import "../CSS/ProductsDisplay.css";
+import { useLocation } from "react-router-dom";
+
+function withLocation(Component) {
+    return props => <Component {...props} location={useLocation()} />;
+}
 
 class ProductsDisplay extends React.Component {
 
@@ -13,11 +18,21 @@ class ProductsDisplay extends React.Component {
 
     // put the url in a config file
     componentDidMount() {
-        fetch("http://localhost:8080/products/" + this.props.product.toLowerCase())
-            .then(res => res.json())
-            .then(data => {
-                this.setState({ products: data })
-            })
+
+        if (this.props.product) {
+            fetch("http://localhost:8081/api/v1/products/categories/" + this.props.product.toLowerCase())
+                .then(res => res.json())
+                .then(data => {
+                    this.setState({ products: data })
+                });
+        } else {
+            fetch("http://localhost:8081/api/v1/products/search?value=" + this.props.location.state.value)
+                .then(res => res.json())
+                .then(data => {
+                    this.setState({ products: data })
+                });
+        }
+
     }
 
     displayProductsFetched = () => {
@@ -27,8 +42,8 @@ class ProductsDisplay extends React.Component {
                 productName={product.productName}
                 quantity={product.quantity}
                 price={product.productPrice}
-                productImg={product.imageUrl} 
-                category={this.props.product}/>
+                productImg={product.imageUrl}
+                category={this.props.product} />
         })
     }
 
@@ -36,7 +51,9 @@ class ProductsDisplay extends React.Component {
         return (
             <div>
                 <MDBContainer className="product-overall-alignment">
-                    <h6 className="display-6 product-heading">{this.props.product} Category</h6>
+                    {this.props.product ?
+                        <h6 className="display-6 product-heading">{this.props.product} Category</h6> :
+                        <h6 className="display-6 product-heading">Products for Search Value : {this.props.location.state.value}</h6>}
                     {this.displayProductsFetched()}
                 </MDBContainer>
 
@@ -46,4 +63,4 @@ class ProductsDisplay extends React.Component {
 
 }
 
-export default ProductsDisplay;
+export default withLocation(ProductsDisplay);
